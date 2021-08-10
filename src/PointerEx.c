@@ -11,4 +11,5 @@ int main(){
 
     printf("Increase num: %d\n", num);
     printf("Increase num: %d\n", *pNum);
+    
 }
