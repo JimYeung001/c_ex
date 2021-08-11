@@ -29,6 +29,8 @@ int main(){
         printf("point: %p\n", (void*)token);
         token = strtok(NULL, " ");
     }
+
+    printf("this is demo for git hub code repository!\n");
     
     
     return 0;
