@@ -3,13 +3,18 @@
 
 int main(){
 
-    int num = 10;
-    int *pNum = NULL;
-    pNum = &num;
+    long num1 = 0L;
+    long num2 = 0L;
+    long *pNum = NULL;
 
-    *pNum +=25;
+    pNum = &num1;
+    *pNum = 2L;
+    ++num2;
+    num2 += *pNum;
+    pNum = &num2;
 
-    printf("Increase num: %d\n", num);
-    printf("Increase num: %d\n", *pNum);
+    ++*pNum;
+
+    printf("num1: %ld, num2 : %ld, *pNum : %ld, *pNum + num2 : %ld\n", num1, num2, *pNum, *pNum + num2);
     
 }
