@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 /**
@@ -28,6 +29,16 @@ int arraySumWithPonter(int *intArray, const int sizeOfArray){
         sum += *intArray;
     }
     return sum;
+}
+
+void copyString(char *to, char *from){
+    if(from){
+        while (from && *from)
+        {
+            *to++ = *from++;
+        }
+        *to = '\0';
+    }
 }
 
 /**
@@ -78,7 +89,7 @@ int main(){
     // array name is not only as name but also as an pointer, which is pointing to the first element of the array
     // int *ptInt = int intArray[i], ptInt++ == intArray[1]
     int values[] = {2,4, 5,8, 9, 1, -5};
-
+    printf("///////////////// pointer with Array ///////////////// \n");
     //Dynamically get sie of array, get whole size of array and devide one size of element
     int sizeOfValues = sizeof(values)/sizeof(values[0]);
 
@@ -88,8 +99,63 @@ int main(){
 
     //Same function using pointer 
     result = arraySumWithPonter(values, sizeOfValues);
-    printf("Sum of the array Values using pointer = %d\n", result);
+    printf("Sum of the array Values using pointer = %d\n\n", result);
     
+    char multiple[] = "a string";
+    char *ptr = multiple;
+
+    for(int i=0; i< strlen(multiple);++i){
+        printf("multiple[%d] = %c ", i, multiple[i]);
+        printf(" *(pt+%d) = %c ", i, *(ptr+i));
+        printf(" &multiple[%d] = %p ", i, &multiple[i]);
+        printf(" pt+%d = %p\n", i, ptr+i);
+        
+    }
+
+
+    printf("\n ----------------- ** -------------------\n");
+    long longArray[] = {15L, 25L, 35L, 45L};
+    long *ptL = longArray;
+
+    for(int i=0; i<sizeof(longArray)/sizeof(longArray[0]); i++){
+        // printf("array memory address: %p ", &longArray[i]);
+        printf("address p+%d(&longArray[%d]: ", i, i);
+        printf(" %llu   *(p+%d) value: %ld\n", (unsigned long long)(ptL+i), i, *(ptL+i));
+    }
+
+    printf("\nType long occupies: %ld bytes\n", sizeof(unsigned long long));
+
+    printf("\nCopy string to another string\n");
+    char *to = NULL;
+    char *from = "this is from string!";
+    while (to && *to)
+    {
+        printf("%c", *to);
+    }
     
+    int stringLen = 0;
+    while (from && *from)
+    {
+        stringLen++;
+        from++;
+    }
+    
+    from = from - stringLen;
+    char newString[stringLen+1];
+    to = newString;
+    copyString(to, from);
+    printf("\nAfter copy string, now to string is : ");
+    while (to && *to)
+    {
+        printf("%c", *to);
+        to++;
+    }
+
+
+    printf("\n///////////////// pointer with Array ///////////////// \n\n");
+
+
+    return 0;
 }
+
 
