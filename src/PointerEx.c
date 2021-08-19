@@ -31,14 +31,33 @@ int arraySumWithPonter(int *intArray, const int sizeOfArray){
     return sum;
 }
 
+/**
+ * Copy string 
+ * source *from, destination *to
+ */
 void copyString(char *to, char *from){
     if(from){
-        while (from && *from)
+        while (*from)
         {
             *to++ = *from++;
         }
         *to = '\0';
     }
+}
+
+/**
+ * function to calculate a string length
+ * return an integer
+ */
+int countStringlength(char const *ptString){
+    int stringLen = 0;
+    while (ptString && *ptString)
+    {
+        stringLen++;
+        ptString++;
+    }
+    // ptString -= stringLen; //this step is not required since the ptString is pointing to ponter *from, they are different.
+    return stringLen;
 }
 
 /**
@@ -133,14 +152,7 @@ int main(){
         printf("%c", *to);
     }
     
-    int stringLen = 0;
-    while (from && *from)
-    {
-        stringLen++;
-        from++;
-    }
-    
-    from = from - stringLen;
+    int stringLen = countStringlength(from);
     char newString[stringLen+1];
     to = newString;
     copyString(to, from);
