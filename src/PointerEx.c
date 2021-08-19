@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+void square(int *const pt);
 
 /**
  * An function to sum all element in any Integer Array 
@@ -49,7 +50,7 @@ void copyString(char *to, char *from){
  * function to calculate a string length
  * return an integer
  */
-int countStringlength(char const *ptString){
+int countStringlength(const char *ptString){
     int stringLen = 0;
     while (ptString && *ptString)
     {
@@ -167,7 +168,18 @@ int main(){
     printf("\n///////////////// pointer with Array ///////////////// \n\n");
 
 
+    int number = 9;
+    square(&number);
+    printf("number 9 square is %d", number);
+
+    printf("\n///////////////// pointer with function ///////////////// \n\n");
+
+
     return 0;
 }
 
+
+void square(int *const pt){
+    *pt *= *pt;
+}
 
